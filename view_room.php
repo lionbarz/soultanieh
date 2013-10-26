@@ -5,43 +5,68 @@ $email = $_SESSION['email'];
 ?>
 
 <!DOCTYPE html>
-<html>
-<head>
-<p>watching as <?= $email ?></p>
-<script>
-function loadXMLDoc()
-{
-var xmlhttp;
-if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }
-else
-  {// code for IE6, IE5
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-xmlhttp.onreadystatechange=function()
-  {
-  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    {
-    var response = xmlhttp.responseText;
-    var obj = JSON.parse(response);
-    //alert(obj[1].user_id);
-    document.getElementById("myDiv").innerHTML=obj[0].user_id + " says " + obj[0].text;//xmlhttp.responseText;
-    }
-  }
-xmlhttp.open("GET","chat.php?update_token=1",true);
-xmlhttp.send();
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
 
-}
-var myVar = setInterval(function(){loadXMLDoc()},1000);
-</script>
-</head>
-<body>
+    <title>Starter Template for Bootstrap</title>
 
-<div id="myDiv"><h2>Let AJAX change this text</h2></div>
-<button type="button" onclick="loadXMLDoc()">Change Content</button>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 
-</body>
+    <!-- Custom styles for this template -->
+    <link href="bootstrap/css/starter-template.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Soultanieh</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Chat</h1>
+        <p class="lead">Watching as <?= $email ?>.</p>
+      </div>
+
+      <div id="myDiv"><h2>Let AJAX change this text</h2></div>
+      <script type="text/javascript" src="js/chat.js"></script>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../assets/js/jquery.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+  </body>
 </html>
-
