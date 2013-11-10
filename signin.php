@@ -4,8 +4,9 @@ session_start();
 $logged_in = false;
 $email = htmlspecialchars($_POST["email"]);
 $passw  = htmlspecialchars($_POST["password"]);
-require('db_info.php');
-$con = mysqli_connect($location, $user, $pass, $db);
+require('lib.php');
+$db = get_db_info();
+$con = mysqli_connect($db["location"], $db["user"], $db["pass"], $db["db"]);
 if (mysqli_connect_errno($con)) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
@@ -14,7 +15,6 @@ $result = mysqli_query($con, $sql);
 if ($row = mysqli_fetch_array($result)) {
   $_SESSION['email']=$email;
   $_SESSION['name'] =$row['name'];
-  require('lib.php');
   render('views/user_profile.php','views/layouts/jumbotron.php');
 } else {
   $error = "Bad username/password combination.";
