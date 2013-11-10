@@ -1,14 +1,21 @@
 <?php
-$logged_in = false;
-if ($logged_in) {
-  $email = htmlspecialchars($_POST["email"]);
-  echo 'Hello ' . $email . '!';
-  echo 'Pass ' . htmlspecialchars($_POST["password"]) . '!';
+session_start();
 
-  session_start();
-  // store session data
+$logged_in = false;
+$email = htmlspecialchars($_POST["email"]);
+$passw  = htmlspecialchars($_POST["password"]);
+require('db_info.php');
+$con = mysqli_connect($location, $user, $pass, $db);
+if (mysqli_connect_errno($con)) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+$sql = "SELECT * FROM user WHERE email = '$email' and password = sha1('".$email.$passw."')";
+$result = mysqli_query($con, $sql);
+if ($row = mysqli_fetch_array($result)) {
   $_SESSION['email']=$email;
-  echo '<a href="view_room.php">watch</a>';
+  $_SESSION['name'] =$row['name'];
+  require('lib.php');
+  render('views/user_profile.php','views/layouts/jumbotron.php');
 } else {
   $error = "Bad username/password combination.";
   include('index.php');
