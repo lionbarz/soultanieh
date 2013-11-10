@@ -6,19 +6,19 @@ function render($file, $layout) {
 }
 
 function get_db_info() {
-  if (exec('hostname') == "ip-10-251-64-80") {
+  if (exec('cat domain') == "develop") {
     return array(
       "location" => "localhost",
-      "user" => "lionbar7",
+      "user" => "lionbar7-develop",
       "pass" => "passw0rd",
-      "db" => "lionbar7_db"
+      "db" => "soultanieh-develop"
     );
   } else {
     return array(
-      "location" => "lionbarz.com",
-      "user" => "lionbar7",
+      "location" => "localhost",
+      "user" => "lionbar7-prod",
       "pass" => "passw0rd",
-      "db" => "lionbar7_db"
+      "db" => "soultanieh-prod"
     );
   }
 }

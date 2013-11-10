@@ -10,7 +10,7 @@ $con = mysqli_connect($db["location"], $db["user"], $db["pass"], $db["db"]);
 if (mysqli_connect_errno($con)) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-$sql = "SELECT * FROM user WHERE email = '$email' and password = sha1('".$email.$passw."')";
+$sql = "SELECT * FROM User WHERE email = '$email' and password = sha1('".$email.$passw."')";
 $result = mysqli_query($con, $sql);
 if ($row = mysqli_fetch_array($result)) {
   $_SESSION['email']=$email;
