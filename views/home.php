@@ -1,5 +1,5 @@
       <div class="jumbotron">
-        <p>A place to chat, share photos and remnisce about the village. Membership is by invitation only.</p>
+        <img src="pics/1DSC01775.JPG" width="90%"/>
       </div>
       
       <div class="row marketing">

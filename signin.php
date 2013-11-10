@@ -4,7 +4,7 @@ session_start();
 $logged_in = false;
 $email = htmlspecialchars($_POST["email"]);
 $passw  = htmlspecialchars($_POST["password"]);
-require('lib.php');
+require_once('lib.php');
 $db = get_db_info();
 $con = mysqli_connect($db["location"], $db["user"], $db["pass"], $db["db"]);
 if (mysqli_connect_errno($con)) {
