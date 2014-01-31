@@ -29,6 +29,13 @@
         <ul class="nav nav-pills pull-right">
           <li><a href="/">Home</a></li>
           <li><a href="about.php">About</a></li>
+          <?php
+            if ($_SESSION['email']) {
+              echo '<li><a href="logout.php">Sign out</a></li>';
+            } else {
+              echo '<li><a href="signin.php">Sign in</a></li>';
+            }
+          ?>
         </ul>
         <h3 class="text-muted">Soultanieh</h3>
       </div>
@@ -45,6 +52,13 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+  <script>
+    <?php 
+      if ($main_controller) {
+        echo "window.history.replaceState('Object', 'Title', '/$main_controller');";
+      }
+    ?>
+  </script>
   </body>
 </html>
 

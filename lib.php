@@ -1,6 +1,6 @@
 <?php
 
-function render($file, $layout) {
+function render($file, $layout, $main_controller, $data) {
   $main_file = $file;
   include($layout);
 }
